@@ -203,5 +203,8 @@ class TestCrawl(unittest.TestCase):
             "image_urls": []
         }
         self.assertEqual(actual, expected)
+
+
+        
 if __name__ == "__main__":
     unittest.main()
