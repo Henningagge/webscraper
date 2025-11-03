@@ -87,35 +87,35 @@ class TestCrawl(unittest.TestCase):
 
 
     def test_urls_from_html(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><a href="https://blog.boot.dev"><span>Boot.dev</span></a></body></html>'
         actual = get_urls_from_html(input_body, input_url)
         expected = ["https://blog.boot.dev"]
         self.assertEqual(actual, expected)
 
     def test_urls_from_htmlnew(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><a href="/hello"><span>Boot.dev/hello</span></a></body></html>'
         actual = get_urls_from_html(input_body, input_url)
         expected = ["https://blog.boot.dev/hello"]
         self.assertEqual(actual, expected)
     
     def test_urls_from_htmlblock(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><a href="/cool.html"><span>Boot.dev.nice</span></a></body></html>'
         actual = get_urls_from_html(input_body, input_url)
         expected = ["https://blog.boot.dev/cool.html"]
         self.assertEqual(actual, expected)
     
     def test_urls_from_htmlref(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><a href="https://hello.com"><span>Hello.com</span></a></body></html>'
         actual = get_urls_from_html(input_body, input_url)
         expected = ["https://hello.com"]
         self.assertEqual(actual, expected)
 
     def test_urls_from_htmlmul(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><a href="https://hello.com"><span>Hello.com</span></a>' \
         '<a href="https://morning.com"><span>Moor.com</span></a></body></html>'
         actual = get_urls_from_html(input_body, input_url)
@@ -123,28 +123,28 @@ class TestCrawl(unittest.TestCase):
         self.assertEqual(actual, expected)
     
     def test_urls_from_htmlnone(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body></body></html>'
         actual = get_urls_from_html(input_body, input_url)
         expected = []
         self.assertEqual(actual, expected)
 
     def test_image_from_html(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><img src="/logo.png" alt="Logo"></body></html>'
         actual = get_images_from_html(input_body, input_url)
         expected = ["https://blog.boot.dev/logo.png"]
         self.assertEqual(actual, expected)
 
     def test_image_from_htmlmul(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body><img src="/logo.png" alt="Logo"><img src="/pokemon.png" alt="Logo"></body></html>'
         actual = get_images_from_html(input_body, input_url)
         expected = ["https://blog.boot.dev/logo.png", "https://blog.boot.dev/pokemon.png"]
         self.assertEqual(actual, expected)
     
     def test_image_from_htmlnone(self):
-        input_url = "https//blog.boot.dev"
+        input_url = "https://blog.boot.dev"
         input_body = '<html><body></body></html>'
         actual = get_images_from_html(input_body, input_url)
         expected = []

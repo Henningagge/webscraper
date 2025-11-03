@@ -24,11 +24,39 @@ def get_first_paragraph_from_html(html):
 			if soup.main.p.string == None:
 				return ""
 		return soup.main.p.string
+	elif p_tag:
+		if soup.p.string == None:
+			return ""
+		return soup.p.string
 	else:
 		return ""
 
 def get_urls_from_html(html, base_url):
-
+	soup = BeautifulSoup(html, 'html.parser')
+	result_arr = []
+	a_tags = soup.find_all("a", href = True)
+	if a_tags:
+		for a in soup.find_all("a", href = True):
+			if "http" in  a["href"]:
+				result_arr.append(a["href"])
+			else:
+				result_arr.append(f"{base_url}{a["href"]}")
+		return result_arr
+	else:
+		return result_arr
 
 
 def get_images_from_html(html, base_url):
+	soup = BeautifulSoup(html, 'html.parser')
+	result_arr = []
+	img_tags = soup.find_all("img")
+	if img_tags:
+		for img in soup.find_all("img", src = True):
+			
+			if "http" in  img["src"]:
+				result_arr.append(img["src"])
+			else:
+				result_arr.append(f"{base_url}{img["src"]}")
+		return result_arr
+	else:
+		return result_arr
