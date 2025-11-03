@@ -60,3 +60,20 @@ def get_images_from_html(html, base_url):
 		return result_arr
 	else:
 		return result_arr
+	
+
+
+def extract_page_data(html, page_url):
+	p = get_first_paragraph_from_html(html)
+	h1 = get_h1_from_html(html)
+	a = get_urls_from_html(html, page_url)
+	img = get_images_from_html(html, page_url)
+	obj = {
+		"url": page_url,
+        "h1": h1,
+        "first_paragraph": p,
+        "outgoing_links": a,
+        "image_urls": img,
+
+	}
+	return obj
