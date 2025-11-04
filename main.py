@@ -2,6 +2,7 @@ import sys
 from crawl import  crawl_site_async
 import asyncio
 from urllib.parse import urlparse
+from csv_repor import write_csv_report
 async def main():
     
     if len(sys.argv) < 2:
@@ -18,7 +19,8 @@ async def main():
     print(page_data)
     for page in page_data.values():
         print(f"Found {len(page['outgoing_links'])} outgoing links on {page['url']}")
-
+    csv = write_csv_report(page_data)
+    print(csv)
     sys.exit(0)
 
 
