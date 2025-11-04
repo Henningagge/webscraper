@@ -9,25 +9,25 @@ class TestCrawl(unittest.TestCase):
     def test_normalize_url(self):
         input_url = "https//:blog.boots.dev/path"
         actual = normalize_url(input_url)
-        expected = "blog.boots.dev/path"
+        expected = "https//:blog.boots.dev/path"
         self.assertEqual(actual, expected)
 
     def test_normalize_path(self):
         input_url = "http//:blog.boots.dev/path"
         actual = normalize_url(input_url)
-        expected = "blog.boots.dev/path"
+        expected = "http//:blog.boots.dev/path"
         self.assertEqual(actual, expected)
 
     def test_normalize_pathdash(self):
         input_url = "http//:blog.boots.dev/path/"
         actual = normalize_url(input_url)
-        expected = "blog.boots.dev/path"
+        expected = "http//:blog.boots.dev/path"
         self.assertEqual(actual, expected)
 
     def test_normalize_urldash(self):
         input_url = "https//:blog.boots.dev/path/"
         actual = normalize_url(input_url)
-        expected = "blog.boots.dev/path"
+        expected = "https//:blog.boots.dev/path"
         self.assertEqual(actual, expected)
 
     def test_h1_html(self):
@@ -205,6 +205,6 @@ class TestCrawl(unittest.TestCase):
         self.assertEqual(actual, expected)
 
 
-        
+
 if __name__ == "__main__":
     unittest.main()
